@@ -9,7 +9,7 @@ const rows = [
   ['covers','Osłony kciuka','90%',2,'2 żółte','yellow'],
   ['covers','Osłony kciuka','80%',4,'2 żółte + 2 czarne','yellow black'],
   ...['100%','90%','85%','80%','70%'].map(size=>['covers','Osłony palców',size,4,'2 żółte + 2 czarne','yellow black']),
-  ['straps','Pasek regulacji naciągu','',null,'W zestawie · długość i ilość do potwierdzenia',''],
+  ['straps','Gumka do regulacji naciągu','10 mm',null,'1 pełna szpula · biała · do przycięcia','white'],
   ['straps','Pasek nadgarstkowy','',null,'W zestawie · długość i ilość do potwierdzenia','']
 ];
 const inventory = document.querySelector('#inventory');

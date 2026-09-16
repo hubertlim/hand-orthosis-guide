@@ -66,3 +66,9 @@ Images are resized/display-cropped for layout and labelled as original-project r
 Seven sender-supplied photos were integrated on 16 September 2026. `scripts/import-photos.mjs` maps the supplied filenames to descriptive assets. It creates correctly oriented, metadata-free WebP copies at up to 1400 px without modifying the originals. Gallery images link to larger views; the main-part photo also illustrates the heating note. Finger photographs are labelled as examples, not a complete count. Package photographs are separate from the MakerWorld licensed reference photographs.
 
 Video follow-up: playback was inspected. Visible stages show water heating, dabbing dry and shaping on the hand; a caption mentions 70 degrees Celsius. This is not a validated temperature for the supplied PLA. Exact immersion time and material equivalence remain unverified.
+
+## Confirmed materials and strap preparation (16 September 2026)
+
+Filament is Bambu Lab PLA Basic. Manufacturer TDS V3.0 lists Tg 60°C, Vicat 57°C, and HDT 57°C at 0.45 MPa. These are material test values, not validated home orthosis shaping or skin-contact parameters. Existing heat guidance and draft status are preserved. Source: https://store.bblcdn.com/s7/default/b189de92249a4b9ebed28b8ea1f080f0/Bambu_PLA_Basic_Technical_Data_Sheet.pdf
+
+The sender supplies a full spool of white 10 mm tension elastic. Cut to length with scissors and narrow lengthwise with a knife and ruler to fit finger-cover/main-plate holes. Dimensions depend on the selected print; no fixed cut widths or lengths were supplied. Knots must hold in place: individual finger-end knots, four finger elastics sharing a knot/holder, thumb on its own elastic/holder. Earlier requests to confirm knot type and pre-cut status are superseded. Wrist-strap photo will follow. The eighth package photo, IMG_20260916_134924.jpg, is optimized as site/assets/kit/tension-strap.webp; original unchanged.
