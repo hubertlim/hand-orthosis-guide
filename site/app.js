@@ -10,14 +10,16 @@ const rows = [
   ['covers','Osłony kciuka','80%',4,'2 żółte + 2 czarne','yellow black'],
   ...['100%','90%','85%','80%','70%'].map(size=>['covers','Osłony palców',size,4,'2 żółte + 2 czarne','yellow black']),
   ['straps','Gumka do regulacji naciągu','10 mm',null,'1 pełna szpula · biała · do przycięcia','white'],
-  ['straps','Pasek nadgarstkowy','',null,'W zestawie · długość i ilość do potwierdzenia','']
+  ['straps','Rzep z haczykami','',null,'1 rolka · biała · do przycięcia','white'],
+  ['straps','Rzep z pętelkami','',null,'1 rolka · biała · do przycięcia','white'],
+  ['straps','Łączniki rzepu','',8,'8 żółtych · łączenie taśm lub ograniczniki','yellow']
 ];
 const inventory = document.querySelector('#inventory');
 function render(filter='all') {
   document.querySelectorAll('[data-photo-group]').forEach(photo=>photo.hidden=filter!=='all'&&photo.dataset.photoGroup!==filter);
   const visible=rows.filter(row=>filter==='all'||row[0]===filter);
   inventory.innerHTML=visible.map(([group,name,scale,count,colours,swatches])=>`<article class="part-card"><div class="part-top"><span class="part-type">${group==='main'?'Podparcie nadgarstka':group==='covers'?'Palce i kciuk':'Uchwyty i paski'}</span><span class="quantity">${count===null?'W zestawie':count+' szt.'}</span></div><h3>${name}</h3>${scale?`<div class="scale">${scale}</div>`:''}<p class="part-colours">${swatches.split(' ').filter(Boolean).map(c=>`<span class="swatch ${c}" aria-hidden="true"></span>`).join('')}<span>${colours}</span></p></article>`).join('');
-  document.querySelector('#part-count').textContent=filter==='all'?'54 drukowane elementy + paski':`Pozycji w zestawie: ${visible.length}`;
+  document.querySelector('#part-count').textContent=filter==='all'?'62 drukowane elementy + 3 rolki taśm':`Pozycji w zestawie: ${visible.length}`;
 }
 render();
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
@@ -31,7 +33,7 @@ window.addEventListener('beforeprint',()=>{printState=[...document.querySelector
 window.addEventListener('afterprint',()=>{document.body.classList.remove('print-label');document.querySelectorAll('details').forEach((d,i)=>d.open=printState[i]);render(document.querySelector('.filter.active').dataset.filter);});
 document.querySelector('#print-guide').addEventListener('click',()=>window.print());
 const config=window.GUIDE_CONFIG;
-if(config.readyForFamily)document.querySelector('#draft-notice').hidden=true;
+
 if(config.readyForFamily&&config.publicUrl){
   try{
     const url=new URL(config.publicUrl);

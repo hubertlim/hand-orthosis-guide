@@ -1,74 +1,55 @@
-# A helping hand
+# Pomocna dłoń
 
-Responsive single-page family guide for the supplied PLA hand orthosis kit. Built for GitHub Pages; no backend, tracking or external runtime scripts. All photo assets and the QR library are served locally.
+Polish family guide for the supplied PLA hand orthosis kit, published at https://hubertlim.github.io/hand-orthosis-guide/.
 
-## Preview
+Static, responsive single-page app with local photographs, inventory filters, expandable instructions, printable guide and package label, and SVG QR download. No backend, tracking or external runtime scripts.
+
+## Development
 
 ```powershell
-npm.cmd ci --cache .npm-cache
+npm.cmd ci
 npm.cmd run build
 npm.cmd run check
 npm.cmd run dev
 ```
 
-Open http://127.0.0.1:4173. Source is in `site/`; the build produces `dist/`. Rebuild and reload the preview after edits.
+Preview: http://127.0.0.1:4173. Source: `site/`; output: `dist/`. Rebuild after editing. GitHub Actions builds, checks and deploys pushes to main.
 
-## Status: draft, not ready for family fitting
+## Final package contents
 
-Implemented: full supplied inventory (54 printed pieces plus straps), category filters, accessible expandable setup sections, responsive layout, source photos and attribution, heating warning, care notes, complete-guide printing, and permanent-URL QR generation with printable label and SVG download.
+62 printed pieces: 6 main plates, 20 elastic holders, 8 thumb covers, 20 finger covers and 8 rectangular Velcro connectors. Three full rolls: white 10 mm tension elastic, hook tape and loop tape. Exact scales and quantities are listed on the page.
 
-Outstanding information:
+Elastic is cut to length with scissors and narrowed lengthwise using a knife and ruler on a cutting surface. Each finger end has a retaining knot. Four finger elastics share one knot and holder; the thumb uses a separate elastic and holder. No fixed cut lengths or knot type were supplied.
 
-- Family language confirmed: Polish. All page content, controls, image descriptions and printable labels default to Polish (HTML lang="pl").
-- Received and integrated all seven package photographs, including the flat main part and a pre-assembly layout. Still needed: supplied straps and a confirmed threaded/assembled reference; exact size labels where photographs alone do not establish them.
-- Confirm exactly what is shipped for the elastic: finger bands, hand band, wrist fastening, widths, lengths and quantities; whether it is pre-cut or pre-threaded.
-- Confirm a safe PLA heating and fitting method, including water temperature, time, cooling and hand position. No temperatures or wear schedule have been invented.
-- Confirm threading and compatibility of scaled holder variants. The model author generally recommends not scaling the strap/tension-adjustment file.
-- Confirm therapist guidance on suitability, fit, tension and wear.
-- GitHub destination confirmed: `hubertlim/hand-orthosis-guide`. Planned Pages URL: https://hubertlim.github.io/hand-orthosis-guide/ (not yet deployed).
+The recommended wrist fastening joins hook and loop tape using a connector, as shown in the sender's photograph. An alternative uses connectors as strap stops. Cut each fastening to the hand or forearm separately, retaining allowance for routing, closure and adjustment. Stops do not replace hook-and-loop closure.
 
-The sender confirmed the finger-elastic connection: cut a separate length for each finger, tie an individual knot at the finger end, then join the four finger elastics with a common knot at one strap holder. The thumb has its own elastic and a separate holder. This is now reflected in the Polish guide. Exact lengths, knot type and routing through holes remain unspecified. This confirmation did not include PLA heating temperature, duration or cooling method.
+## Fitting limits
 
-Do not remove the draft notice or enable the QR label until the content is complete and checked. `site/config.js` deliberately has `readyForFamily: false` and the planned Pages URL in `publicUrl`. Finish the actual instructions before setting these values. QR generation is local using qrcode-generator (MIT); a four-module quiet zone is preserved. The label includes the literal URL and is approximately 90 mm wide, with a 45 mm code. Scan-test the final printed label on a phone before shipping.
+`readyForFamily: true` enables the completed guide's QR label; it does not signify clinical validation. Suitability, position, tension, wear schedule and safe heat-fitting method require guidance from a hand therapist. Only the detached main plate may be heat formed. Covers, holders, connectors and straps must not be heated.
 
-## Publish on GitHub Pages
+The Instagram demonstration shows a MITHRIL splint and a 70°C caption; it does not validate that temperature or an immersion time for this kit. Bambu Lab PLA Basic TDS V3.0 reports Tg 60°C, Vicat 57°C and HDT 57°C at 0.45 MPa. These are material test values, not a home shaping protocol or skin-safe temperatures. The guide retains these distinctions.
 
-The workflow `.github/workflows/pages.yml` runs on pushes to `main` or manually, builds `dist/`, checks local assets and links, then deploys via official Pages actions. Draft publication keeps the visible draft notice and disables the package label button. Setting `readyForFamily: true` additionally requires all unfinished fitting sections to have been completed. To finish the family guide:
+## Sources and attribution
 
-1. Set the permanent HTTPS URL in `site/config.js`, including the repository subpath when applicable.
-2. Replace every unfinished fitting section and enable `readyForFamily`.
-3. Push this project to the chosen repository.
-4. In repository Settings → Pages select GitHub Actions as the build source.
-5. Run **Publish family guide** from Actions.
-6. Verify the live page on a phone, then print the label from the page.
+Reviewed 16 September 2026:
 
-GitHub authentication was verified outside the restricted sandbox; the saved login is valid. The public repository is https://github.com/hubertlim/hand-orthosis-guide. The site is being published as an explicitly labelled draft until the remaining fitting details are complete.
+- [Piotrownik's original model](https://makerworld.com/en/models/479608-improving-fine-motor-skills-3d-printed-orthosis#profileId-391009), a student alpha project at the Academy of Fine Arts in Krakow.
+- [Instagram technique demonstration](https://www.instagram.com/reel/DdTQ9sOAYs5/), creaid_labs / lordofthesplints. Playback showed heating, drying and shaping; exact immersion duration and material equivalence were not verified.
+- [Bambu Lab PLA Basic TDS](https://store.bblcdn.com/s7/default/b189de92249a4b9ebed28b8ea1f080f0/Bambu_PLA_Basic_Technical_Data_Sheet.pdf).
+- [UHCW splint information](https://www.uhcw.nhs.uk/download/clientfiles/files/Patient%20Information%20Leaflets/Clinical%20Support%20Services/Therapies/Hand%20Therapy/Splint%20information.pdf).
+- [University Hospitals Sussex splint advice](https://www.uhsussex.nhs.uk/wp-content/uploads/2024/05/2206.1-Splint-advice-2025.pdf).
 
-## Sources and image attribution
+Original-project photographs `site/assets/orthosis.webp` (2024-05-30_a6101bfd8441c.webp) and `site/assets/detail.webp` (2024-05-30_3729a42fdb7e9.webp) are by Piotrownik under CC BY-NC-SA 4.0. They are resized/display-cropped and labelled as reference photographs. Adapted guide text uses the same license. No endorsement is implied. The QR library retains its MIT license in `dist/vendor/QR-LICENSE.txt`.
 
-Reviewed 16 September 2026.
+The twelve sender-supplied package photographs are separate from the MakerWorld photographs. `scripts/import-photos.mjs` maps original filenames and produces correctly oriented, metadata-free WebP copies up to 1400 px; originals remain unchanged.
 
-- [Piotrownik: Improving fine motor skills, 3D printed orthosis](https://makerworld.com/en/models/479608-improving-fine-motor-skills-3d-printed-orthosis#profileId-391009). Browser inspection confirmed the creator, alpha-project status, flat wrist stabilizer shaping description, elastic force adjustment, and license.
-- The author lists 6 mm finger elastic, 19 mm hand elastic and 25 mm wrist Velcro. These describe the original design, not confirmed contents of this package.
-- [Instagram reference](https://www.instagram.com/reel/DdTQ9sOAYs5/): visible caption identifies a MITHRIL cock-up splint from creaid_labs / lordofthesplints. It is a different product. The video’s complete demonstration and thermal settings were not verified and no PLA procedure was derived from it.
-- [UHCW splint information](https://www.uhcw.nhs.uk/download/clientfiles/files/Patient%20Information%20Leaflets/Clinical%20Support%20Services/Therapies/Hand%20Therapy/Splint%20information.pdf): general skin and sensation precautions.
-- [University Hospitals Sussex splint advice](https://www.uhsussex.nhs.uk/wp-content/uploads/2024/05/2206.1-Splint-advice-2025.pdf): general symptoms that require advice.
+## QR label
 
-The following images are by Piotrownik, from the MakerWorld project under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/):
+The permanent URL is configured in `site/config.js`. The page generates the QR locally, with a four-module quiet zone, SVG download and printable label (approximately 90 mm wide with a 45 mm QR).
 
-- `site/assets/orthosis.webp`: original `2024-05-30_a6101bfd8441c.webp`, acquired at 1000 px width.
-- `site/assets/detail.webp`: original `2024-05-30_3729a42fdb7e9.webp`, acquired at 400 px width.
+```powershell
+node scripts/make-qr.mjs
+node scripts/check-qr.mjs
+```
 
-Images are resized/display-cropped for layout and labelled as original-project references, not package photographs. The adapted guide content is shared under CC BY-NC-SA 4.0. The included QR library retains its own MIT license, copied to `dist/vendor/QR-LICENSE.txt`. No endorsement by the model author or the clinical sources is implied.
-
-## Package photographs
-
-Seven sender-supplied photos were integrated on 16 September 2026. `scripts/import-photos.mjs` maps the supplied filenames to descriptive assets. It creates correctly oriented, metadata-free WebP copies at up to 1400 px without modifying the originals. Gallery images link to larger views; the main-part photo also illustrates the heating note. Finger photographs are labelled as examples, not a complete count. Package photographs are separate from the MakerWorld licensed reference photographs.
-
-Video follow-up: playback was inspected. Visible stages show water heating, dabbing dry and shaping on the hand; a caption mentions 70 degrees Celsius. This is not a validated temperature for the supplied PLA. Exact immersion time and material equivalence remain unverified.
-
-## Confirmed materials and strap preparation (16 September 2026)
-
-Filament is Bambu Lab PLA Basic. Manufacturer TDS V3.0 lists Tg 60°C, Vicat 57°C, and HDT 57°C at 0.45 MPa. These are material test values, not validated home orthosis shaping or skin-contact parameters. Existing heat guidance and draft status are preserved. Source: https://store.bblcdn.com/s7/default/b189de92249a4b9ebed28b8ea1f080f0/Bambu_PLA_Basic_Technical_Data_Sheet.pdf
-
-The sender supplies a full spool of white 10 mm tension elastic. Cut to length with scissors and narrow lengthwise with a knife and ruler to fit finger-cover/main-plate holes. Dimensions depend on the selected print; no fixed cut widths or lengths were supplied. Knots must hold in place: individual finger-end knots, four finger elastics sharing a knot/holder, thumb on its own elastic/holder. Earlier requests to confirm knot type and pre-cut status are superseded. Wrist-strap photo will follow. The eighth package photo, IMG_20260916_134924.jpg, is optimized as site/assets/kit/tension-strap.webp; original unchanged.
+The second command independently decodes the generated SVG to verify its destination. Scan-test the actual printed label before attaching it to the package.
