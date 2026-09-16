@@ -1,0 +1,11 @@
+import qrcode from 'qrcode-generator';
+import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import vm from 'node:vm';
+const context={window:{}};
+vm.runInNewContext(await readFile('site/config.js','utf8'),context);
+const url=new URL(context.window.GUIDE_CONFIG.publicUrl);
+if(url.protocol!=='https:')throw new Error('Expected HTTPS URL');
+const qr=qrcode(0,'M');qr.addData(url.href);qr.make();
+await mkdir('artifacts',{recursive:true});
+await writeFile('artifacts/pomocna-dlon-qr.svg',qr.createSvgTag({cellSize:8,margin:32,scalable:true}));
+console.log(`QR generated for ${url.href}`);
